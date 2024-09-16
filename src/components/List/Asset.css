@@ -1,0 +1,66 @@
+.asset-container{
+	/* width: 30%; */
+    min-width: 300px;
+	min-height: 30px;
+	display: -webkit-flex;
+	display: flex;
+    user-select: none;
+}
+.asset-container .info {
+    border-radius: 8px 0 0 8px;
+	padding: 10px;
+	background-color: #49d941;
+	/* -webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1; */
+    flex-grow: 1;
+    max-width: 200px;
+    min-width: 100px;
+}
+.asset-container .info.options {
+    border-radius: 0 0 0 0;
+    padding: 0;
+	background-color: transparent;
+    max-width: 45px;
+    min-width: 45px;
+    /* flex-shrink: 0; */
+
+    flex-direction: column;
+}
+
+.delete {
+    border-radius: 0 0 8px 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    background-color: #49d941d8;
+    height: 50%;
+    width: 100%;
+}
+.delete:hover { background-color: #ea2e20ea; }
+.delete:active { background-color: #f42516f6; }
+
+.remove {
+    border-radius: 0 8px 0 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    background-color: #49d941d8;
+    height: 50%;
+    width: 100%;
+}
+.remove:hover { background-color: #ffe539ea; }
+.remove:active { background-color: #ffe224; }
+
+.delete svg { transition: transform 0.3s ease-in-out; }
+.delete:active svg { transform: rotate(90deg); }
+.remove svg { transition: transform 0.15s ease-in-out; }
+.remove:active svg { transform: scale(0.8); }
+
+
