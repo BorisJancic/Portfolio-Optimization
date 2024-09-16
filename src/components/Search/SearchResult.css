@@ -7,7 +7,7 @@
 
 .search-result:hover {
     background-color: var(--search-result-hover-color);
-    transition: background-color 0.5s;
+    /* transition: background-color 0.5s; */
     /* background-color: var(--search-bar-background-color); */
 }
 
@@ -29,6 +29,7 @@
 
 .search-result.unselected {
     background-color: #ffe224ea;
+    color: black;
     padding: 10px 20px;
 }
 .search-result.unselected:hover {
