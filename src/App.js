@@ -533,7 +533,7 @@ function App() {
           darkMode={darkMode}
       />}
 
-      {showPlots && <div className='graphs-container'>
+      {showPlots ? <div className='graphs-container'>
         <GraphFrontier
             frontierUnconstrained={frontierUnconstrained}
             frontierConstrained={frontierConstrained}
@@ -551,6 +551,8 @@ function App() {
             corrMatrix={corrMatrix}
             darkMode={darkMode}
         />
+      </div> : <div>
+        <br/><br/><br/><br/>
       </div>}
       <div className='info-section'>
         <br/>
