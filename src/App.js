@@ -556,7 +556,7 @@ function App() {
       </div>}
       <div className='info-section'>
         <br/>
-        <hr style={{ border: 'none', height: '5px', backgroundColor: 'currentColor', marginRight: '5%' }} />
+        <hr style={{ border: 'none', height: '5px', backgroundColor: 'currentColor' }} />
         <br/>
         <h3>What is Portfolio Optimization?</h3>
         <p>The Markowitz portfolio optimization scheme aims to minimize the volatility of a portfolio while maximizing its return.</p>
