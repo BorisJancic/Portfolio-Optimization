@@ -5,12 +5,9 @@ import Plot from 'react-plotly.js';
 
 
 const GraphCorrelation = memo(({tickerSymbols, corrMatrix, darkMode}) => {
-    const WHITE_BACKGROUND = '#f2f2f2';
     const WHITE_BORDER = '#F0F0F0';
-    const BLACK_BACKGROUND = '#1A1A1A';
     const BLACK_BORDER = '#0F0F0F';
     const [plotFontColor, setPlotFontColor] = useState('black');
-    const [plotBackgroundColor, setPlotBackgroundColor] = useState('white');
     const [graphLength, setGraphLength] = useState(window.innerWidth);
   
     useEffect(() => {
@@ -21,10 +18,8 @@ const GraphCorrelation = memo(({tickerSymbols, corrMatrix, darkMode}) => {
     useEffect(() => {
         if (darkMode) {
             setPlotFontColor(WHITE_BORDER);
-            setPlotBackgroundColor(BLACK_BACKGROUND);
         } else {
             setPlotFontColor(BLACK_BORDER);
-            setPlotBackgroundColor(WHITE_BACKGROUND);
         }
     }, [darkMode]);
 
@@ -113,8 +108,9 @@ const GraphCorrelation = memo(({tickerSymbols, corrMatrix, darkMode}) => {
                     width: 400,
                     height: 400,
                     margin: { l: 60, r: 50, t: 100, b: 50 },
-                    paper_bgcolor: plotBackgroundColor,   // Background color for the entire plot area (outside graph)
-                    plot_bgcolor: plotBackgroundColor,    // Background color for the inside of the graph (plot area)
+                    paper_bgcolor: 'rgba(0, 0, 0, 0)',
+                    plot_bgcolor: 'rgba(0, 0, 0, 0)',
+ 
                     width: graphLength,
                     height: graphLength,
                 }}

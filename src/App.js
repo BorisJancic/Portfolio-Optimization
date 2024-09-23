@@ -73,7 +73,7 @@ function App() {
       if (selectedStocks[i].return < min_return) { min_return = selectedStocks[i].return; }
       if (selectedStocks[i].return > max_return) { max_return = selectedStocks[i].return; }
     } max_return *= 1.0;
-    let extra_iterations = 3;
+    let extra_iterations = parseInt(iterations / 3);
     let x_vals = new Array(iterations + extra_iterations).fill(0);
     let y_vals = new Array(iterations + extra_iterations).fill(0);
     let w_vals = new Array(iterations + extra_iterations);

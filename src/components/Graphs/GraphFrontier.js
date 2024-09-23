@@ -21,7 +21,8 @@ const GraphFrontier = memo(({
     const [graphWidth, setGraphWidth] = useState(window.innerWidth);
     const [graphHeight, setGraphHeight] = useState(window.innerWidth);
     const [plotFontColor, setPlotFontColor] = useState('black');
-    const [plotBackgroundColor, setPlotBackgroundColor] = useState('white');
+    const [plotGridColor, setPlotGridColor] = useState('rgba(255, 255, 255, 0.5)');
+    const [PlotBgColor, setPlotBgColor] = useState('#1A1A1A')
 
     useEffect(() => {
         window.addEventListener('resize', handleResize);
@@ -31,11 +32,21 @@ const GraphFrontier = memo(({
     useEffect(() => {
         if (darkMode) {
             setPlotFontColor(WHITE_BORDER);
-            setPlotBackgroundColor(BLACK_BACKGROUND);
+            setPlotGridColor('rgba(255, 255, 255, 0.5)');
+            setPlotBgColor('rgba(255, 255, 255, 0.0)');
         } else {
             setPlotFontColor(BLACK_BORDER);
-            setPlotBackgroundColor(WHITE_BACKGROUND);
+            setPlotGridColor('rgba(0, 0, 0, 0.2)');
+            setPlotBgColor('rgba(255, 255, 255, 0.0)');
         }
+        const timeoutId = setTimeout(() => {
+            if (darkMode) {
+                setPlotBgColor('#1A1A1A');
+            } else {
+                setPlotBgColor('#f2f2f2');
+            }
+        }, 500);
+        return () => clearTimeout(timeoutId);
     }, [darkMode]);
     
     const handleResize = () => {
@@ -106,7 +117,7 @@ const GraphFrontier = memo(({
                     type: "scatter",
                     mode: "lines+markers",
                     line: { shape: "spline" },
-                    marker: { color: "blue" },
+                    marker: { color: darkMode ? '#0080ff' : 'blue', },
                     name: "Frontier without Short Selling",
                     visible: visibility[1] ? true : 'legendonly',
                     ...frontierConstrainedData,
@@ -151,18 +162,32 @@ const GraphFrontier = memo(({
                 },
                 ]}
                 layout={{
-                    paper_bgcolor: plotBackgroundColor, // Background color for the entire plot area (outside graph)
-                    plot_bgcolor: 'rgba(255, 255, 255, 0)', // Set the plot background (inside graph), adjust as needed
+                    // paper_bgcolor: plotBackgroundColor, // Background color for the entire plot area (outside graph)
+                    // plot_bgcolor: 'rgba(255, 255, 255, 0)', // Set the plot background (inside graph), adjust as needed
                     titlefont: { color: plotFontColor },
                     tickfont: { color: plotFontColor },
                     width: graphWidth * 1.5,
                     height: graphHeight,
                     title: "Optimal Sharp Ratio",
-                    xaxis: { title: "Volatility σ (%)", color: plotFontColor, zeroline: false },
-                    yaxis: { title: "Return μ (%)", color: plotFontColor, zeroline: false },
+                    xaxis: {
+                        title: "Volatility σ (%)",
+                        color: plotFontColor,
+                        zeroline: false,
+                        gridcolor: plotGridColor,
+                    },
+                    yaxis: {
+                        title: "Return μ (%)",
+                        color: plotFontColor,
+                        zeroline: false,
+                        gridcolor: plotGridColor,
+                    },
                     margin: { l: 80, r: 40, t: 80, b: 80 },
                     
-                    legend: { font: { size: 10, color: plotFontColor }, x: 1, }                
+                    legend: {
+                        font: { size: 10, color: plotFontColor }, x: 1,
+                    },
+                    paper_bgcolor: 'rgba(0, 0, 0, 0)',
+                    plot_bgcolor: PlotBgColor,
                 }}
                 onLegendClick={updateLegend}
             />}

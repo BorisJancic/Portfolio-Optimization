@@ -9,7 +9,8 @@ const GraphWeights = memo(({frontierConstrained, darkMode}) => {
   const BLACK_BACKGROUND = '#1A1A1A';
   const BLACK_BORDER = '#0F0F0F';
   const [plotFontColor, setPlotFontColor] = useState('black');
-  const [plotBackgroundColor, setPlotBackgroundColor] = useState('white');
+  const [plotGridColor, setPlotGridColor] = useState('rgba(255, 255, 255, 0.5)');
+  const [PlotBgColor, setPlotBgColor] = useState('#1A1A1A')
   const [graphWidth, setGraphWidth] = useState(window.innerWidth);
   const [graphHeight, setGraphHeight] = useState(window.innerWidth);
 
@@ -21,12 +22,22 @@ const GraphWeights = memo(({frontierConstrained, darkMode}) => {
   useEffect(() => {
     if (darkMode) {
         setPlotFontColor(WHITE_BORDER);
-        setPlotBackgroundColor(BLACK_BACKGROUND);
+        setPlotGridColor('rgba(255, 255, 255, 0.7)');
+        setPlotBgColor('rgba(255, 255, 255, 0.0)');
     } else {
         setPlotFontColor(BLACK_BORDER);
-        setPlotBackgroundColor(WHITE_BACKGROUND);
+        setPlotGridColor('rgba(0, 0, 0, 0.225)');
+        setPlotBgColor('rgba(255, 255, 255, 0.0)');
     }
-  }, [darkMode]);
+    const timeoutId = setTimeout(() => {
+      if (darkMode) {
+          setPlotBgColor('#1A1A1A');
+      } else {
+          setPlotBgColor('#f2f2f2');
+      }
+  }, 500);
+  return () => clearTimeout(timeoutId);
+}, [darkMode]);
   
   const handleResize = () => {
     const MIN_HEIGHT = 100;
@@ -116,7 +127,7 @@ const GraphWeights = memo(({frontierConstrained, darkMode}) => {
             y: y,
             name: name,
             text: name,
-            hovertemplate: `<span style="font-family: monospace;">${name}: %{y:.2f}</span><br><extra></extra>`,  // No x-coordinate here
+            hovertemplate: `<span style="font-family: monospace;">${name}: %{y:.2f}</span><br><extra></extra>`,
             line: {
               ...baseTrace.line,
               color: getColor(index, transposedYData.length)
@@ -138,18 +149,28 @@ const GraphWeights = memo(({frontierConstrained, darkMode}) => {
         title: {
           text: 'Optimal Portfolio Allocation',
           font: {
-            family: 'Arial, sans-serif', // Font family for the main title
-            size: 24,                    // Font size for the main title
-            color: plotFontColor          // Font color for the main title
+            family: 'Arial, sans-serif',
+            size: 24,
+            color: plotFontColor
           }
         },
-        xaxis: { title: "Return μ (%)", zeroline: false, color: plotFontColor },
+        xaxis: {
+          title: "Return μ (%)",
+          color: plotFontColor,
+          gridcolor: plotGridColor,
+          zeroline: false,
+          showspikes: true,
+          spikedash: 'dash',
+          spikecolor: plotFontColor,
+          spikethickness: 1.5,
+        },
         xaxis2: {
           title: {
             text: 'Volatility σ (%)',
             standoff: 5,
             hovertemplate: 'none',
-            color: plotFontColor
+            color: plotFontColor,
+            gridcolor: plotGridColor,
           },
           showgrid: false,
           overlaying: 'x',
@@ -159,21 +180,29 @@ const GraphWeights = memo(({frontierConstrained, darkMode}) => {
           zeroline: false,
           color: plotFontColor
         },
-        yaxis: { title: "Weight", range: [0, 1], color: plotFontColor },
+        yaxis: { title: "Weight", range: [0, 1], color: plotFontColor, gridcolor: plotGridColor, },
         hovermode: 'x unified',
         width: graphWidth,
         height: graphHeight,
         margin: { t: 100, b: 60, l: 50, r: 50 },
-        paper_bgcolor: plotBackgroundColor,  // Entire plot background color
-        // plot_bgcolor: plotAreaBackgroundColor,  // Plot (inside the graph) background color
+        // paper_bgcolor: 'rgba(0, 0, 0, 0)',
+        paper_bgcolor: PlotBgColor,
+        plot_bgcolor: 'rgba(255,255,255, 0)',
         legend: {
             font: {
-                family: "Arial, sans-serif",  // Set the font for the legend
-                size: 12,                     // Legend font size
-                color: plotFontColor           // Legend font color
+                family: "Arial, sans-serif",
+                size: 12,
+                color: plotFontColor,
             }
         },
         dragmode: false,
+        hoverlabel: {
+          bgcolor: darkMode ? 'rgba(0,0,0,.67)' : 'rgba(255,255,255,.8)',
+          font: {
+              color: darkMode ? '#dddddd' : '#111111',
+          },
+          bordercolor: darkMode ? '#333333' : '#AAAAAA',
+        },
       };
 
     return (
