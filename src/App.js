@@ -17,12 +17,8 @@ import DarkModeSelector from './components/DarkModeSelector';
 function App() {
 // TODO
 // Iterrations slider (line on graph?)
-// Display weights on curser
-// Default Graph Visibility
-// CSS
-// Dark mode
-// Segment into different files
 // Sliders for desired Var and Return
+// Segment into different files
 // Interest rates and line
 // Clean up request logic
 
