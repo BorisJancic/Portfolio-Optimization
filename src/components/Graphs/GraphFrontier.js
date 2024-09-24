@@ -158,7 +158,7 @@ const GraphFrontier = memo(({
                     name: "Stocks",
                     text: stockPoints[2],
                     visible: visibility[4] ? true : 'legendonly',
-                    hovertemplate: `<span style="font-family: monospace;">%{text}<br>Return:   %{x:.1f}%<br>Volatility: %{y:.1f}%<br><extra></extra>`,
+                    hovertemplate: `<span style="font-family: monospace;">%{text}<br>Return:   %{y:.1f}%<br>Volatility: %{x:.1f}%<br><extra></extra>`,
                 },
                 ]}
                 layout={{
