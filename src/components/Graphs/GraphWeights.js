@@ -197,7 +197,7 @@ const GraphWeights = memo(({frontierConstrained, darkMode}) => {
         },
         dragmode: false,
         hoverlabel: {
-          bgcolor: darkMode ? 'rgba(0,0,0,.67)' : 'rgba(255,255,255,.8)',
+          bgcolor: darkMode ? 'rgba(0,0,0,.7)' : 'rgba(255,255,255,.8)',
           font: {
               color: darkMode ? '#dddddd' : '#111111',
           },
