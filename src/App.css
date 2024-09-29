@@ -8,6 +8,15 @@ h1, h2, h3, h4, p, hr {
   transition: color 0.5s;
 }
 
+a:link {
+  color: var(--link-color);
+  transition: color 0.5s;
+}
+a:visited {
+  color: var(--link-color);
+  transition: color 0.5s;
+}
+
 .info-section {
   margin-top: 5%;
   margin-bottom: 10%;
@@ -72,6 +81,7 @@ h1, h2, h3, h4, p, hr {
   transition: color 0.5s;
   font-size: 10px;
   margin-right: 5px; /* Space between text and link */
+  cursor: pointer;
 }
 .github_link {
   font-size: 10px;

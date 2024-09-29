@@ -474,7 +474,7 @@ function App() {
   return (
     <div className="App">
       <div className="name_container">
-        <p className="name_paragraph">Boris Jancic</p>
+        <p className="name_paragraph" onClick={() => { window.open('https://github.com/BorisJancic/Portfolio-Optimization', '_blank') }}>Boris Jancic</p>
         <a href="https://github.com/BorisJancic/Portfolio-Optimization" target="_blank" className="github_link">
           <svg
               className={darkMode ? 'dark-mode-icon': 'light-mode-icon'}
@@ -572,9 +572,9 @@ function App() {
         <p>...Also, who's to say that an optimal portfolio minimizes variance. Why should a long-term investor care?</p>
         <br/>
         <h3>Useful Sources</h3>
-        <p>Wikipedia: <a href='https://en.wikipedia.org/wiki/Efficient_frontier'>Efficiency Frontier</a></p>
-        <p>Wikipedia: <a href='https://en.wikipedia.org/wiki/Modern_portfolio_theory'>Modern Portfolio Theory</a></p>
-        <p>Corporate Finance Institute: <a href='https://corporatefinanceinstitute.com/resources/career-map/sell-side/capital-markets/modern-portfolio-theory-mpt/'>Modern Portfolio Theory</a></p>
+        <p>Wikipedia: <a href='https://en.wikipedia.org/wiki/Efficient_frontier' target="_blank">Efficiency Frontier</a></p>
+        <p>Wikipedia: <a href='https://en.wikipedia.org/wiki/Modern_portfolio_theory' target="_blank">Modern Portfolio Theory</a></p>
+        <p>Corporate Finance Institute: <a href='https://corporatefinanceinstitute.com/resources/career-map/sell-side/capital-markets/modern-portfolio-theory-mpt/' target="_blank">Modern Portfolio Theory</a></p>
       </div>
     </div>
   );
