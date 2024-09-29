@@ -474,7 +474,7 @@ function App() {
   return (
     <div className="App">
       <div className="name_container">
-        <p className="name_paragraph" onClick={() => { window.open('https://github.com/BorisJancic/Portfolio-Optimization', '_blank') }}>Boris Jancic</p>
+        <p className="name_paragraph" onClick={() => { window.open('https://github.com/BorisJancic', '_blank') }}>Boris Jancic</p>
         <a href="https://github.com/BorisJancic/Portfolio-Optimization" target="_blank" className="github_link">
           <svg
               className={darkMode ? 'dark-mode-icon': 'light-mode-icon'}
