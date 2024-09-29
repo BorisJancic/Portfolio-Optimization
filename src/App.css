@@ -77,6 +77,16 @@ h1, h2, h3, h4, p, hr {
   font-size: 10px;
 }
 
+.dark-mode-icon {
+  fill: #eeeeee;
+  transition: fill 0.5s ease; /* Smooth transition for fill color */
+}
+
+.light-mode-icon {
+  fill: #222222;
+  transition: fill 0.5s ease; /* Smooth transition for fill color */
+}
+
 
 
 /* .App {

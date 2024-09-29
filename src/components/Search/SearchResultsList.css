@@ -2,12 +2,12 @@
     width: 100%;
     /* background-color: white; */
     background-color: var(--search-bar-background-color);
-    transition: background-color 0.5s;
+    transition: 'background-color' 0.5s;
     display: flex;
     flex-direction: column;
     box-shadow: 0px 0px 8px var(--box-shadow-color);
     box-shadow: 0px 8px 8px -4px var(--box-shadow-color);
-    transition: box-shadow 0.5s;
+    transition: 'box-shadow' 0.5s;
     border-radius: 10px;
     /* margin-top: 1rem; */
     max-height: 300px;
